@@ -1,4 +1,12 @@
-import { ADDED, FILTERED, INITIALTASK, REMOVE, TOGGLED } from "./actionTypes";
+import {
+  ADDED,
+  ALLCOMPLITED,
+  CLEARCOMPLITED,
+  FILTERED,
+  INITIALTASK,
+  REMOVE,
+  TOGGLED,
+} from "./actionTypes";
 import initialState from "./initialState";
 
 const nextTodoId = (tasks) => {
@@ -46,6 +54,23 @@ const reducer = (state = initialState, action) => {
 
     case FILTERED:
       return action.payload;
+
+    case ALLCOMPLITED:
+      const complited = state.map((task) => {
+        return {
+          ...task,
+          color: "red",
+        };
+      });
+
+      localStorage.setItem("task", JSON.stringify(complited));
+      return complited;
+
+    case CLEARCOMPLITED:
+      const clear = state.filter((task) => task.color !== "red");
+      localStorage.setItem("task", JSON.stringify(clear));
+      return clear;
+
     default:
       return state;
   }

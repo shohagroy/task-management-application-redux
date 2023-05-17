@@ -2,7 +2,7 @@ import Nodes from "../assets/notes.png";
 import Dubble_tick from "../assets/double-tick.png";
 import Plus from "../assets/plus.png";
 import { useDispatch } from "react-redux";
-import { added } from "../redux/tasks/actions";
+import { added, allComplited, clearComplited } from "../redux/tasks/actions";
 import { useState } from "react";
 
 const TodoHeader = () => {
@@ -23,6 +23,14 @@ const TodoHeader = () => {
       color: "green",
     });
     dispatch(added(newTask));
+  };
+
+  const allTaskComplitedHandelar = () => {
+    dispatch(allComplited());
+  };
+
+  const clearAllCompliteTask = () => {
+    dispatch(clearComplited());
   };
   return (
     <div>
@@ -45,11 +53,16 @@ const TodoHeader = () => {
       </form>
 
       <ul className="flex justify-between my-4 text-xs text-gray-500">
-        <li className="flex space-x-1 cursor-pointer">
+        <li
+          onClick={allTaskComplitedHandelar}
+          className="flex space-x-1 cursor-pointer"
+        >
           <img className="w-4 h-4" src={Dubble_tick} alt="Complete" />
           <span>Complete All Tasks</span>
         </li>
-        <li className="cursor-pointer">Clear completed</li>
+        <li onClick={clearAllCompliteTask} className="cursor-pointer">
+          Clear completed
+        </li>
       </ul>
     </div>
   );

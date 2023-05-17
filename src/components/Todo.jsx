@@ -20,7 +20,7 @@ const Todo = ({ task, serial }) => {
     <div className="flex justify-start items-center p-2 hover:bg-gray-100 hover:transition-all space-x-4 border-b border-gray-400/20 last:border-0">
       <p>{serial + 1}.</p>
 
-      <div className="select-none flex-1">{text}</div>
+      <div className="select-none flex-1 capitalize">{text}</div>
 
       <div
         onClick={() => taskUpdateHandelar({ id, color: "green" })}

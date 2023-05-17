@@ -1,4 +1,12 @@
-import { ADDED, FILTERED, INITIALTASK, REMOVE, TOGGLED } from "./actionTypes";
+import {
+  ADDED,
+  ALLCOMPLITED,
+  CLEARCOMPLITED,
+  FILTERED,
+  INITIALTASK,
+  REMOVE,
+  TOGGLED,
+} from "./actionTypes";
 
 export const initial = (tasks) => {
   return {
@@ -32,5 +40,17 @@ export const filtered = (tasks) => {
   return {
     type: FILTERED,
     payload: tasks,
+  };
+};
+
+export const allComplited = () => {
+  return {
+    type: ALLCOMPLITED,
+  };
+};
+
+export const clearComplited = () => {
+  return {
+    type: CLEARCOMPLITED,
   };
 };
