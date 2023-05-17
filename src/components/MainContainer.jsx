@@ -11,8 +11,7 @@ const MainContainer = () => {
   const tasks = useSelector((state) => state.tasks);
 
   useEffect(() => {
-    const remainTaks = JSON.parse(localStorage.getItem("task"));
-
+    const remainTaks = JSON.parse(localStorage.getItem("task")) || [];
     dispatch(initial(remainTaks));
   }, [dispatch]);
 
@@ -24,9 +23,11 @@ const MainContainer = () => {
       {/* <!-- todo list --> */}
       <div className="mt-2 text-gray-700 text-sm max-h-[300px] overflow-y-auto">
         {/* <!-- todo --> */}
-        {tasks.map((task) => (
-          <Todo key={task.id} task={task} />
-        ))}
+        {tasks
+          .sort((a, b) => a.id - b.id)
+          .map((task, i) => (
+            <Todo key={task.id} task={task} serial={i} />
+          ))}
 
         {/* <!-- todo --> */}
       </div>

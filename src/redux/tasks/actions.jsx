@@ -1,4 +1,4 @@
-import { ADDED, INITIALTASK, REMOVE } from "./actionTypes";
+import { ADDED, INITIALTASK, REMOVE, TOGGLED } from "./actionTypes";
 
 export const initial = (tasks) => {
   return {
@@ -18,5 +18,12 @@ export const remove = (id) => {
   return {
     type: REMOVE,
     payload: id,
+  };
+};
+
+export const updated = (value) => {
+  return {
+    type: TOGGLED,
+    payload: value,
   };
 };

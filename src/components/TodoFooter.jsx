@@ -10,7 +10,7 @@ const TodoFooter = ({ tasks }) => {
       <ul className="flex space-x-1 items-center text-xs">
         <li className="cursor-pointer font-bold">All</li>
         <li>|</li>
-        <li className="cursor-pointer">Incomplete</li>
+        <li className="cursor-pointer">Ongoing</li>
         <li>|</li>
         <li className="cursor-pointer">Complete</li>
         <li></li>

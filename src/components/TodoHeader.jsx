@@ -9,7 +9,7 @@ const TodoHeader = () => {
   const [newTask, setNewTask] = useState({
     text: "",
     completed: false,
-    color: "red",
+    color: "green",
   });
 
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const TodoHeader = () => {
     setNewTask({
       text: "",
       completed: false,
-      color: "red",
+      color: "green",
     });
     dispatch(added(newTask));
   };
