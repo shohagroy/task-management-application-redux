@@ -1,4 +1,4 @@
-import { ADDED, INITIALTASK, REMOVE, TOGGLED } from "./actionTypes";
+import { ADDED, FILTERED, INITIALTASK, REMOVE, TOGGLED } from "./actionTypes";
 import initialState from "./initialState";
 
 const nextTodoId = (tasks) => {
@@ -43,6 +43,9 @@ const reducer = (state = initialState, action) => {
         JSON.stringify([...remainTask, updatedTask])
       );
       return [...remainTask, updatedTask];
+
+    case FILTERED:
+      return action.payload;
     default:
       return state;
   }
