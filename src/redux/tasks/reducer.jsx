@@ -1,4 +1,4 @@
-import { ADDED, INITIALTASK } from "./actionTypes";
+import { ADDED, INITIALTASK, REMOVE } from "./actionTypes";
 import initialState from "./initialState";
 
 const nextTodoId = (tasks) => {
@@ -14,15 +14,19 @@ const reducer = (state = initialState, action) => {
       return action.payload;
 
     case ADDED:
-      const remain = [
+      const tasks = [
         ...state,
         {
           ...action.payload,
           id: nextTodoId(state),
         },
       ];
-      localStorage.setItem("task", JSON.stringify(remain));
+      localStorage.setItem("task", JSON.stringify(tasks));
+      return tasks;
 
+    case REMOVE:
+      const remain = state.filter((task) => task.id !== action.payload);
+      localStorage.setItem("task", JSON.stringify(remain));
       return remain;
 
     default:
