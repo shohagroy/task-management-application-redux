@@ -1,9 +1,12 @@
-import React from "react";
-
-const TodoFooter = () => {
+const TodoFooter = ({ tasks }) => {
   return (
     <div className="mt-4 flex justify-between text-xs text-gray-500">
-      <p>2 tasks left</p>
+      {tasks.length ? (
+        <p>{tasks.length} tasks left</p>
+      ) : (
+        <p>No Task Available!</p>
+      )}
+
       <ul className="flex space-x-1 items-center text-xs">
         <li className="cursor-pointer font-bold">All</li>
         <li>|</li>

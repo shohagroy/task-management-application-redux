@@ -1,13 +1,28 @@
-import React from "react";
 import Nodes from "../assets/notes.png";
 import Dubble_tick from "../assets/double-tick.png";
 import Plus from "../assets/plus.png";
+import { useDispatch } from "react-redux";
+import { added } from "../redux/tasks/actions";
+import { useState } from "react";
 
 const TodoHeader = () => {
+  const [newTask, setNewTask] = useState({
+    text: "",
+    completed: false,
+    color: "red",
+  });
+
+  const dispatch = useDispatch();
+
   const addNewTaskHandelar = (e) => {
     e.preventDefault();
-    const newTask = e.target.task.value;
-    console.log(newTask);
+
+    setNewTask({
+      text: "",
+      completed: false,
+      color: "red",
+    });
+    dispatch(added(newTask));
   };
   return (
     <div>
@@ -17,7 +32,9 @@ const TodoHeader = () => {
       >
         <img src={Nodes} className="w-6 h-6" alt="Add todo" />
         <input
+          onChange={(e) => setNewTask({ ...newTask, text: e.target.value })}
           type="text"
+          value={newTask.text}
           placeholder="Type your task..."
           name="task"
           className="w-full text-lg px-4 py-1 border-none outline-none bg-gray-100 text-gray-500"

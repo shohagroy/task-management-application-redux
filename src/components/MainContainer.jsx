@@ -1,9 +1,21 @@
-import React from "react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { initial } from "../redux/tasks/actions";
 import Todo from "./Todo";
 import TodoFooter from "./TodoFooter";
 import TodoHeader from "./TodoHeader";
 
 const MainContainer = () => {
+  const dispatch = useDispatch();
+  const tasks = useSelector((state) => state.tasks);
+
+  useEffect(() => {
+    const remainTaks = JSON.parse(localStorage.getItem("task"));
+
+    dispatch(initial(remainTaks));
+  }, [dispatch]);
+
   return (
     <div className="w-full max-w-3xl shadow-lg rounded-lg p-6 bg-white">
       <TodoHeader />
@@ -12,10 +24,9 @@ const MainContainer = () => {
       {/* <!-- todo list --> */}
       <div className="mt-2 text-gray-700 text-sm max-h-[300px] overflow-y-auto">
         {/* <!-- todo --> */}
-        <Todo />
-        <Todo />
-        <Todo />
-        <Todo />
+        {tasks.map((task) => (
+          <Todo key={task.id} task={task} />
+        ))}
 
         {/* <!-- todo --> */}
       </div>
@@ -23,7 +34,7 @@ const MainContainer = () => {
       <hr className="mt-4" />
 
       {/* <!-- footer --> */}
-      <TodoFooter />
+      <TodoFooter tasks={tasks} />
     </div>
   );
 };
