@@ -45,6 +45,7 @@ const TodoHeader = () => {
           value={newTask.text}
           placeholder="Type your task..."
           name="task"
+          required
           className="w-full text-lg px-4 py-1 border-none outline-none bg-gray-100 text-gray-500"
         />
         <button type="submit" className={`appearance-none w-8 h-8 bg-contain`}>

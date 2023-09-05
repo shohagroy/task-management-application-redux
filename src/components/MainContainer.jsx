@@ -16,7 +16,7 @@ const MainContainer = () => {
   }, [dispatch]);
 
   return (
-    <div className="w-full max-w-3xl shadow-lg rounded-lg p-6 bg-white">
+    <div className="w-full max-w-3xl shadow-lg rounded-lg p-2 lg:p-6 bg-white">
       <TodoHeader />
       <hr className="mt-4" />
 

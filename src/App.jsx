@@ -5,7 +5,7 @@ import Header from "./shared/Header";
 function App() {
   return (
     <main>
-      <div className="grid place-items-center bg-blue-100 h-screen px-6 font-sans">
+      <div className="grid place-items-center bg-blue-100 h-screen p-2 lg:px-6 font-sans">
         {/* <!-- header --> */}
         <Header />
         <MainContainer />

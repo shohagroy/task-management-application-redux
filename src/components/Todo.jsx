@@ -1,4 +1,3 @@
-import React from "react";
 import { useDispatch } from "react-redux";
 import Cancel from "../assets/cancel.png";
 import { remove, updated } from "../redux/tasks/actions";
